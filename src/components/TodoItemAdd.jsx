@@ -1,4 +1,4 @@
-function TodoItemAdd() {
+function TodoItemAdd({ onNewItem }) {
   return (
     <div className="container text-center">
       <div className="row kg-row">
@@ -9,7 +9,11 @@ function TodoItemAdd() {
           <input type="date"></input>
         </div>
         <div className="col-2">
-          <button type="button" className="btn btn-success kg-button">
+          <button
+            type="button"
+            className="btn btn-success kg-button"
+            onClick={() => onNewItem("a", "12344")}
+          >
             Add
           </button>
         </div>
