@@ -4,31 +4,25 @@ import "./App.css";
 
 import TodoItems from "./components/TodoItems";
 import TodoItemAdd from "./components/TodoItemAdd";
+import WelcomeMessage from "./components/WelcomeMessage";
 function App() {
-  const initialTodoItems = [
-    {
-      name: "Buy Milk",
-      dueDate: "4/10/23",
-    },
-    {
-      name: "Go to College",
-      dueDate: "4/10/23",
-    },
-    {
-      name: "Make a video",
-      dueDate: "4/10/23",
-    },
-  ];
-  const [todoItems, setTodoItems] = useState(initialTodoItems);
+  const [todoItems, setTodoItems] = useState([]);
 
   const handleNewItem = (itemName, itemDueDate) => {
     console.log(`New item added ${itemName} Date: ${itemDueDate}`);
+    const newTodoItems = [
+      ...todoItems,
+      { name: itemName, dueDate: itemDueDate },
+    ];
+    setTodoItems(newTodoItems);
   };
 
   return (
     <center className="todo-container">
       <AppName />
       <TodoItemAdd onNewItem={handleNewItem} />
+      {todoItems.length === 0 && <WelcomeMessage />}
+
       <TodoItems todoItems={todoItems} />
     </center>
   );
