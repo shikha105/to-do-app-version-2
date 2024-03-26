@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { IoMdAddCircle } from "react-icons/io";
 
 function TodoItemAdd({ onNewItem }) {
-  const [todoName, setTodoName] = useState();
-  const [dueDate, setDueDate] = useState();
+  const [todoName, setTodoName] = useState("");
+  const [dueDate, setDueDate] = useState("");
 
   const handleNameChange = (event) => {
     setTodoName(event.target.value);
@@ -42,7 +43,7 @@ function TodoItemAdd({ onNewItem }) {
             className="btn btn-success kg-button"
             onClick={handleAddButtonClicked}
           >
-            Add
+            <IoMdAddCircle />
           </button>
         </div>
       </div>
