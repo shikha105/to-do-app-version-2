@@ -13,7 +13,8 @@ function TodoItemAdd({ onNewItem }) {
     setDueDate(event.target.value);
   };
 
-  const handleAddButtonClicked = () => {
+  const handleAddButtonClicked = (event) => {
+    event.preventDefault();
     onNewItem(todoName, dueDate);
     setTodoName("");
     setDueDate("");
@@ -21,7 +22,7 @@ function TodoItemAdd({ onNewItem }) {
 
   return (
     <div className="container text-center">
-      <div className="row kg-row">
+      <form onSubmit={handleAddButtonClicked} className="row kg-row">
         <div className="col-6">
           <input
             type="text"
@@ -38,15 +39,11 @@ function TodoItemAdd({ onNewItem }) {
           ></input>
         </div>
         <div className="col-2">
-          <button
-            type="button"
-            className="btn btn-success kg-button"
-            onClick={handleAddButtonClicked}
-          >
+          <button className="btn btn-success kg-button">
             <IoMdAddCircle />
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
