@@ -9,25 +9,31 @@ import { TodoItemsContext } from "./store/todo-items-store";
 function App() {
   const [todoItems, setTodoItems] = useState([]);
 
-  const handleNewItem = (itemName, itemDueDate) => {
+  const addNewItem = (itemName, itemDueDate) => {
     setTodoItems((curValue) => [
       ...curValue,
       { name: itemName, dueDate: itemDueDate },
     ]);
   };
-  const handleDeleteItem = (itemName) => {
+  const deleteItem = (itemName) => {
     const newTodoItems = todoItems.filter((item) => item.name !== itemName);
     setTodoItems(newTodoItems);
   };
 
   return (
-    <TodoItemsContext.Provider value={todoItems}>
+    <TodoItemsContext.Provider
+      value={{
+        todoItems: todoItems,
+        addNewItem: addNewItem,
+        deleteItem: deleteItem,
+      }}
+    >
       <center className="todo-container">
         <AppName />
-        <TodoItemAdd onNewItem={handleNewItem} />
+        <TodoItemAdd />
         <WelcomeMessage />
 
-        <TodoItems onDeleteItem={handleDeleteItem} />
+        <TodoItems />
       </center>
     </TodoItemsContext.Provider>
   );
