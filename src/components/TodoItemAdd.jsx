@@ -25,7 +25,7 @@ function TodoItemAdd() {
           <input
             ref={todoNameElement}
             type="text"
-            placeholder="Enter Todo Item here"
+            placeholder="Enter Item here"
           ></input>
         </div>
         <div className="col-4">
